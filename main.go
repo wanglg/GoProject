@@ -22,6 +22,10 @@ func main() {
 		Url:       "http://www.zhenai.com/zhenghun",
 		ParesFunc: parser.ParserCityList,
 	})
+
+
+
+
 	//math := re.FindAllString(text, -1)
 	//fmt.Println(math)
 }
