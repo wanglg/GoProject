@@ -9,22 +9,18 @@ import (
 	"regexp"
 	"crawler/engine"
 	"crawler/zhenai/parser"
+	"crawler/scheduler"
 )
 
-
 func main() {
-	//data, err := fetcher.Fetcher("http://www.zhenai.com/zhenghun")
-	//if err != nil {
-	//	panic(err)
-	//}
-	//printCityList(data)
-	engine.SimpleEngine.Run(engine.Request{
+	e := engine.ConcurrentEngine{
+		WorkCount: 20,
+		Scheduler: &scheduler.SimpleScheduler{},
+	}
+	e.Run(engine.Request{
 		Url:       "http://www.zhenai.com/zhenghun",
 		ParesFunc: parser.ParserCityList,
 	})
-
-
-
 
 	//math := re.FindAllString(text, -1)
 	//fmt.Println(math)
