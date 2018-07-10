@@ -36,6 +36,9 @@ func ParseProfile(contens []byte, name string) engine.ParseResult {
 	}
 	profile.Marriage = extractString(contens, aarriageRe)
 	profile.Gender = extractString(contens, genderRe)
+	if profile.Gender != "女" { //筛选条件
+		return engine.NilParse(contens)
+	}
 	profile.Occupation = extractString(contens, occupationRe)
 	profile.Education = extractString(contens, educationRe)
 	profile.Name = name

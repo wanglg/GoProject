@@ -14,14 +14,17 @@ import (
 
 func main() {
 	e := engine.ConcurrentEngine{
-		WorkCount: 20,
-		Scheduler: &scheduler.SimpleScheduler{},
+		WorkCount: 30,
+		Scheduler: &scheduler.QueueScheduler{},
 	}
+	//e.Run(engine.Request{
+	//	Url:       "http://www.zhenai.com/zhenghun",
+	//	ParesFunc: parser.ParserCityList,
+	//})
 	e.Run(engine.Request{
-		Url:       "http://www.zhenai.com/zhenghun",
-		ParesFunc: parser.ParserCityList,
+		Url:       "http://www.zhenai.com/zhenghun/shanghai",
+		ParesFunc: parser.ParseCity,
 	})
-
 	//math := re.FindAllString(text, -1)
 	//fmt.Println(math)
 }
